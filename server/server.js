@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 
 // Route includes
 var indexRouter = require('./routes/index.router');
+var taskRouter = require('./routes/task.router');
 
 
 var port = process.env.PORT || 5000;
@@ -23,10 +24,11 @@ app.use(express.static('./server/public'));
 // app.use(passport.session());
 
 // Routes
-
+app.use('/task', taskRouter);
 
 // Catch all bucket, must be last!
 app.use('/', indexRouter);
+
 
 // Listen //
 app.listen(port, function(){
