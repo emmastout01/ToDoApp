@@ -13,6 +13,15 @@ myApp.service('MainService', function($http) {
        })
     }
 
+    self.getTasks = function() {
+        return $http.get('/task').then(function(response) {
+            console.log('get response', response)
+            return response;
+        }).catch(function(err) {
+            console.log('error with get request', err);
+        })
+    }
+
 
 
 }); //End service

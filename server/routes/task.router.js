@@ -3,9 +3,27 @@ var router = express.Router();
 var path = require('path');
 var pool = require('../modules/pool.js');
 
+router.get('/', function (req, res) {
+    pool.connect(function (err, db, done) {
+        if (err) {
+            console.log("Error connecting: ", err);
+            res.sendStatus(500);
+        }
+        var queryText = 'SELECT * FROM "tasks";'
+        db.query(queryText, function (errorMakingQuery, result) {
+            done();
+            if (errorMakingQuery) {
+                console.log('error making query', errorMakingQuery);
+                res.sendStatus(500);
+            } else {
+                res.send(result.rows);
+            }
+        });
+    }); //end of pool
+}); //end of get
+
 router.post('/', function (req, res) {
     var newTask = req.body.taskName;
-    console.log('new task', newTask);
     pool.connect(function (err, db, done) {
         if (err) {
             console.log("Error connecting: ", err);

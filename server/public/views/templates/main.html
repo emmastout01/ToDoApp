@@ -5,3 +5,7 @@
 <input type="text" ng-model="mc.newTask.taskName">
 
 <button ng-click= "mc.addTask(mc.newTask)">Create Task</button>
+
+<h1>Tasks</h1>
+
+<h4 ng-repeat="task in mc.tasks">{{task.task_name}}</h4>
