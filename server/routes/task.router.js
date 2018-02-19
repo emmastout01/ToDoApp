@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
             console.log("Error connecting: ", err);
             res.sendStatus(500);
         }
-        var queryText = 'SELECT * FROM "tasks";'
+        var queryText = 'SELECT * FROM "tasks" ORDER BY "id";'
         db.query(queryText, function (errorMakingQuery, result) {
             done();
             if (errorMakingQuery) {
@@ -41,5 +41,26 @@ router.post('/', function (req, res) {
         });
     }); //end of pool
 }); //end of post
+
+router.put('/:id', function (req, res) {
+    var taskId = req.params.id;
+    var completed = 'TRUE';
+    pool.connect(function (err, db, done) {
+        if (err) {
+            console.log("Error connecting: ", err);
+            res.sendStatus(500);
+        }
+        var queryText = 'UPDATE "tasks" SET "complete" = $1 WHERE "id" = $2;'
+        db.query(queryText, [completed, taskId], function (errorMakingQuery, result) {
+            done();
+            if (errorMakingQuery) {
+                console.log('error making query', errorMakingQuery);
+                res.sendStatus(500);
+            } else {
+                res.sendStatus(201);
+            }
+        });
+    }); //end of pool
+}); //end of put
 
 module.exports = router;

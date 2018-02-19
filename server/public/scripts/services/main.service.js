@@ -22,6 +22,14 @@ myApp.service('MainService', function($http) {
         })
     }
 
+    self.completeTask = function(taskId) {
+        console.log('about to send task', taskId);
+        return $http.put('/task/' + taskId).then(function(response) {
+            return response;
+        }).catch(function(err) {
+            console.log('error with get request', err);
+        })
+    }
 
 
 }); //End service

@@ -17,13 +17,19 @@ myApp.controller('MainController', function($location, MainService) {
 
     vm.getTasks = function() {
         vm.mainService.getTasks().then(function(response) {
-            console.log('response', response.data);
             vm.tasks = response.data;
             console.log('tasks', vm.tasks);
         })
     }
 
     vm.getTasks();
+
+    vm.completeTask = function(task) {
+        var taskId = task.id;
+        vm.mainService.completeTask(taskId).then(function(response) {
+            vm.getTasks();
+        })
+    }
 
 
 }); //end main controller
