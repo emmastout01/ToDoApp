@@ -8,4 +8,16 @@
 
 <h1>Tasks</h1>
 
-<h4 ng-repeat="task in mc.tasks">{{task.task_name}}</h4>
+<table>
+   <thead>
+       <tr>
+           <th>Task</th>
+           <th>Completed?</th>
+       </tr>
+   </thead>
+   <tr ng-repeat="task in mc.tasks">
+       <td>{{task.task_name}}</td>
+       <td>{{task.complete}}</td>
+   </tr>
+</table>
+<!-- <h4 ng-repeat="task in mc.tasks">{{task.task_name}}</h4> -->
