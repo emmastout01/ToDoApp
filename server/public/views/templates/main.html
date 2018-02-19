@@ -16,7 +16,7 @@
             <th>Completed?</th>
         </tr>
     </thead>
-    <tr ng-repeat="task in mc.tasks | orderBy: 'task.id'">
+    <tr ng-repeat="task in mc.tasks | orderBy: '+id'">
         <td>{{task.id}}</td>
         <td>{{task.task_name}}</td>
         <td>{{task.complete}}</td>
