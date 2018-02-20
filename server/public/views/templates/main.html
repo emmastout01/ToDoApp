@@ -11,13 +11,11 @@
 <table>
     <thead>
         <tr>
-            <th>Task ID</th>
             <th>Task</th>
             <th>Completed?</th>
         </tr>
     </thead>
     <tr ng-repeat="task in mc.tasks | orderBy: '+id'">
-        <td>{{task.id}}</td>
         <td>{{task.task_name}}</td>
         <td>{{task.complete}}</td>
         <td>
@@ -29,7 +27,7 @@
  <br>
 
 <span>You have <ng-pluralize count="mc.incompleteTasks.length"
-when="{'0': 'hello test',
+when="{'0': 'no tasks to complete',
     '1': '1 task remaining',
     'other': '{} tasks remaining'}"></ng-pluralize></span>
 <!-- <h4 ng-repeat="task in mc.tasks">{{task.task_name}}</h4> -->
