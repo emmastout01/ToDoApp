@@ -6,6 +6,8 @@ myApp.controller('MainController', function($location, MainService) {
         taskName: ''
     };
     vm.tasks = [];
+    vm.completedTasks = [];
+    vm.uncompleteTasks = [];
 
 
     vm.addTask = function(newTask) {
@@ -18,7 +20,6 @@ myApp.controller('MainController', function($location, MainService) {
     vm.getTasks = function() {
         vm.mainService.getTasks().then(function(response) {
             vm.tasks = response.data;
-            console.log('tasks', vm.tasks);
         })
     }
 

@@ -21,8 +21,14 @@
         <td>{{task.task_name}}</td>
         <td>{{task.complete}}</td>
         <td>
-            <button ng-click="mc.completeTask(task)">Check!</button>
+            <button ng-show="task.complete !== true" ng-click="mc.completeTask(task)">Check!</button>
         </td>
     </tr>
 </table>
+ <br>
+
+<span>You have <ng-pluralize count="mc.tasks.length"
+when="{'0': 'hello test',
+    '1': '1 task remaining',
+    'other': '{} tasks remaining'}"></ng-pluralize></span>
 <!-- <h4 ng-repeat="task in mc.tasks">{{task.task_name}}</h4> -->
