@@ -23,7 +23,15 @@ myApp.service('MainService', function($http) {
         return $http.put('/task/' + taskId).then(function(response) {
             return response;
         }).catch(function(err) {
-            console.log('error with get request', err);
+            console.log('error with put request', err);
+        })
+    }
+
+    self.deleteTask = function(taskId) {
+        return $http.delete('/task/' + taskId).then(function(response) {
+            return response;
+        }).catch(function(err) {
+            console.log('error with delete request', err);
         })
     }
 

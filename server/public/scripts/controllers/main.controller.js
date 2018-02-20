@@ -9,14 +9,6 @@ myApp.controller('MainController', function($location, MainService) {
     vm.completeTasks = [];
     vm.incompleteTasks = [];
 
-
-    vm.addTask = function(newTask) {
-        vm.mainService.addTask(newTask)
-        .then(function() {
-            vm.getTasks();
-        })
-    }
-
     vm.getTasks = function() {
         vm.mainService.getTasks().then(function(response) {
             vm.tasks = response.data;
@@ -27,9 +19,23 @@ myApp.controller('MainController', function($location, MainService) {
 
     vm.getTasks();
 
+    vm.addTask = function(newTask) {
+        vm.mainService.addTask(newTask)
+        .then(function() {
+            vm.getTasks();
+        })
+    }
+
     vm.completeTask = function(task) {
         var taskId = task.id;
         vm.mainService.completeTask(taskId).then(function(response) {
+            vm.getTasks();
+        })
+    }
+
+    vm.deleteTask = function(task) {
+        var taskId = task.id;
+        vm.mainService.deleteTask(taskId).then(function(response) {
             vm.getTasks();
         })
     }

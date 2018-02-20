@@ -63,4 +63,24 @@ router.put('/:id', function (req, res) {
     }); //end of pool
 }); //end of put
 
+router.delete('/:id', function (req, res) {
+    var taskId = req.params.id;
+    pool.connect(function (err, db, done) {
+        if (err) {
+            console.log("Error connecting: ", err);
+            res.sendStatus(500);
+        }
+        var queryText = 'DELETE from "tasks" WHERE "id" = $1;'
+        db.query(queryText, [taskId], function (errorMakingQuery, result) {
+            done();
+            if (errorMakingQuery) {
+                console.log('error making query', errorMakingQuery);
+                res.sendStatus(500);
+            } else {
+                res.sendStatus(201);
+            }
+        });
+    }); //end of pool
+}); //end of delete
+
 module.exports = router;
