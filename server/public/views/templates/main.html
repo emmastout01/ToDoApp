@@ -31,8 +31,8 @@ when="{'0': 'no tasks to complete',
     '1': '1 task remaining',
     'other': '{} tasks remaining'}"></ng-pluralize></span>
 
-<button>Active tasks</button>
+<button ng-click="mc.showActiveTasks()">Active tasks</button>
 
-<button>Completed tasks</button>
+<button ng-click="mc.showCompletedTasks()">Completed tasks</button>
 
-<button>All tasks</button>
+<button ng-click="mc.showAllTasks()">All tasks</button>

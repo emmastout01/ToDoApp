@@ -63,4 +63,16 @@ myApp.controller('MainController', function($location, MainService) {
         }
     }
 
+    vm.showActiveTasks = function() {
+
+    }
+
+    vm.showCompleteTasks = function() {
+        
+    }
+
+    vm.showAllTasks = function() {
+        
+    }
+
 }); //end main controller
