@@ -57,5 +57,10 @@ myApp.controller('MainController', function($location, MainService) {
         }
     }
 
+    vm.checkIfComplete = function(task) {
+        if (task.complete === false) {
+            return true;
+        }
+    }
 
 }); //end main controller
